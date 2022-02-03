@@ -5,12 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm start ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "ng build --prod",
-    "heroku-postbuild": "ng build"
+    "build:prod": "npm start ng build --prod",
+    "heroku-postbuild": "npm run build:prod"
   },
   "private": true,
   "dependencies": {
