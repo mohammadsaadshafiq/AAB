@@ -4,12 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm start ng serve",
-    "build": "npm start ng build",
+    "start": "npm run ng serve",
+    "build": "npm run ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "npm start ng build --prod",
+    "build:prod": "npm run ng build --prod",
     "heroku-postbuild": "npm run build:prod"
   },
   "private": true,
