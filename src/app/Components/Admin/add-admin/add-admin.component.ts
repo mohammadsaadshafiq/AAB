@@ -5,7 +5,7 @@ import { Update } from '@ngrx/entity';
 import { select, Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AdminsService } from '../../services/admin.service';
-import { AdminAdded, AdminLoaded, AdminSaved, LoadRoles } from '../Admin.actions';
+import { AdminAdded, AdminLoaded, AdminSaved, LoadRoles } from '../../Admin/admin.actions';
 import { selectAdminById, selectRolesState, selectTotal } from '../admin.selectors';
 import { AppState } from '../AppState';
 import { AdminModel } from '../model/admin.model';

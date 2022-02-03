@@ -20,7 +20,7 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AdminEffects } from './Components/Admin/admin.effects';
-import { AdminsReducer } from './Components/Admin/Admin.reducers';
+import { AdminsReducer } from '../app/Components/Admin/admin.reducers'
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoaderInterceptor } from './Services/interceptor.service';
