@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-import { AdminsReducer, RoleReducer } from './Admin.reducers';
+import { AdminsReducer, RoleReducer } from '../Admin/admin.reducers';
 import { AdminEffects } from './admin.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { AddAdminComponent } from './add-admin/add-admin.component';
