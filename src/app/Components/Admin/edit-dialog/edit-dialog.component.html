@@ -1,0 +1,17 @@
+<div >
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxFlex.gt-xs="40" fxFlex.sm="70">
+      <mat-card-title class="text-center">Update Pasword</mat-card-title>
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>New Password</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error *ngIf="form.get('password')?.invalid">Password is required</mat-error>
+        </mat-form-field>
+        <div class="button" fxLayoutAlign="center center">
+          <button type="submit" mat-raised-button color="primary">Submit</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+  </div>

@@ -1,0 +1,36 @@
+<div >
+  <form [formGroup]="form" (ngSubmit)="addAdmin()" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex.gt-xs="40" fxFlex.sm="70">
+    <mat-card-title class="text-center">{{title}}</mat-card-title>
+    <mat-card-content>
+      
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+        <mat-error *ngIf="form.get('username')?.invalid">Username is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="form.get('email')?.invalid">Please Enter Email Correctly</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="form.get('password')?.invalid">Password is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roleList" [value]="role">{{role}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('role')?.invalid">Role is required</mat-error>
+        
+      </mat-form-field>
+      <div class="button" fxLayoutAlign="center center">
+        <button type="submit" mat-raised-button color="primary">{{button}}</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>
+</div>

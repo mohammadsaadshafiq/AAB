@@ -1,0 +1,67 @@
+
+  <div *ngIf="role" class="flex-container" fxLayout="flex" fxLayoutAlign="space-between center">
+    <div fxFlex="60">
+      <mat-form-field appearance="standard" gdarea="header" >
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+      </mat-form-field> </div>
+    <div >
+      <button (click)="openAddUser()" mat-raised-button color="primary">Add User</button> </div>
+</div>
+  <div *ngIf="role" >
+
+    <div fxLayout="column">
+      
+      
+    </div>
+  
+    <table mat-table #mytable  matTable [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> SrNo. </th>
+        <td mat-cell *matCellDef="let element;let i=index"> {{i+1}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> Username </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+       <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container> 
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+      </ng-container>
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element" class="cursor-pointer"> 
+          <span (click)="deleteuser(element.admin)"  class="material-icons">delete</span><i (click)="edit(element.admin,element.username,element.email,element.role)" class="material-icons">edit_note</i> </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+     
+
+
+  <div *ngIf="!role">
+      <mat-card fxFlex.gt-xs="100" fxFlex.sm="170">
+        <mat-card-title style="height:400px;margin-top:250px" class="text-center"> <mat-icon style="font-size: 60px;">warning</mat-icon> <h2>You don't have permission to access this feature</h2> </mat-card-title>
+      </mat-card>
+  </div>
+  
+  
+  

@@ -1,0 +1,40 @@
+<div *ngIf="role">
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit(form.value)"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      <mat-card fxFlex.gt-xs="100" fxFlex.sm="170">
+        <mat-card-title class="text-center">Update Hard Coded Values</mat-card-title>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Key</mat-label>
+            <input matInput formControlName="Key" />
+            <mat-error *ngIf="form.get('Key')?.invalid"
+              >Key is required</mat-error
+            >
+          </mat-form-field>
+  
+          <mat-form-field>
+            <mat-label>Value</mat-label>
+            <input matInput formControlName="Value" />
+            <mat-error *ngIf="form.get('Value')?.invalid"
+              >Value is required</mat-error
+            >
+          </mat-form-field>
+          <div class="button" fxLayoutAlign="center center">
+            <button type="submit" mat-raised-button color="primary">
+              Submit
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+  <div *ngIf="!role">
+    <mat-card fxFlex.gt-xs="100" fxFlex.sm="170">
+      <mat-card-title  class="text-center"> <mat-icon style="font-size: 60px; margin-right:35px">warning</mat-icon> <h2>You don't have permission to access this feature</h2> </mat-card-title>
+    </mat-card>
+</div>
+  
