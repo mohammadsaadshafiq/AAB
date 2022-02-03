@@ -7,8 +7,9 @@ const app = express();
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/<name-of-app>'));
 
-app.get('*', (req, res) => {
-    res.sendFile('../AAB/dist/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+app.get('/*', function(req,res) {
+    
+res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
