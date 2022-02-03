@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:prod": "ng build --prod",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
