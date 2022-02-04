@@ -41,6 +41,7 @@ export class AdminListComponent implements OnInit {
 
   ngOnInit(): void {
     this.rolesAPI();
+    this.adminService.roleLogic();
     this.sleep(200)
     this.store.dispatch(new AllAdminsRequested());
     this.allAdmins$.subscribe(data=>{

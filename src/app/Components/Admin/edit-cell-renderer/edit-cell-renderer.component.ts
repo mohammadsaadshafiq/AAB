@@ -30,30 +30,9 @@ export class EditCellRendererComponent implements ICellRendererAngularComp {
       });
     }
     ngOnInit(): void {
-      this.rolesAPI();
-    }
-    rolesAPI(){
-      this._service.getRolesAPI().subscribe(x=>{
-        this.data1 =x;
-        setTimeout( () => { this.ifBlock() }, 500 );
-      })
-    }
-    ifBlock(){
-      let role = this.data1.data[0].role;
-      if(role == 'ROLE_SUPERADMIN'){
-        this.role = true
-      }
-      else{
-        this.role= false
-      }
+    this.role=this._service.roleReturn();
     }
     refresh(): boolean {
       return false;
     }
-    sleep(miliseconds) {
-      var currentTime = new Date().getTime();
-   
-      while (currentTime + miliseconds >= new Date().getTime()) {
-      }
-   }
 }

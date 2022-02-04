@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 @Injectable()
 export class AdminsService {
   private _url = environment.APIUrl;
+  role: boolean =null;
 
   constructor(
     public router: Router,
@@ -16,7 +17,6 @@ export class AdminsService {
     private https: HttpClient
   ) {}
   data;
-  a;
   public headers = new HttpHeaders({
     "Cache-Control": "no-cache, no-store, must-revalidate",
     Authorization: "Bearer " + localStorage.getItem("_context"),
@@ -157,6 +157,23 @@ export class AdminsService {
               return throwError(err);
             })
           );
+      }
+      roleLogic(){
+        this.getRolesAPI().subscribe(x=>{
+          this.data = x ;
+          let role = this.data.data[0].role;
+          if(role == 'ROLE_SUPERADMIN'){
+            this.role=null;
+            this.role = true
+          }
+          else{
+            this.role=null;
+            this.role= false
+          }
+        })
+      }
+      roleReturn(){
+        return this.role;
       }
   //   getTestECC(userName, password) {
   //     let a = `${userName}:${password}`;

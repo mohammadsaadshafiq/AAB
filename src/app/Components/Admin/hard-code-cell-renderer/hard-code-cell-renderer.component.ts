@@ -16,7 +16,6 @@ export class HardCodeCellRendererComponent  implements ICellRendererAngularComp 
   role;
   data1;
   constructor(public dialog: MatDialog, public router: Router , public _service: AdminsService) {
-    this.rolesAPI();
   }
   public params: any;
 
@@ -24,21 +23,7 @@ export class HardCodeCellRendererComponent  implements ICellRendererAngularComp 
     this.params = params;
   }
   ngOnInit(): void {
-  }
-  rolesAPI(){
-    this._service.getRolesAPI().subscribe(x=>{
-      this.data1 =x;
-      setTimeout( () => { this.ifBlock() }, 500 );
-    })
-  }
-  ifBlock(){
-    let role = this.data1.data[0].role;
-    if(role == 'ROLE_SUPERADMIN'){
-      this.role = true
-    }
-    else{
-      this.role= false
-    }
+    this.role=this._service.roleReturn();
   }
     openDialog(): void {
       const dialogRef = this.dialog.open(HardCodeModalComponent, {
@@ -50,10 +35,4 @@ export class HardCodeCellRendererComponent  implements ICellRendererAngularComp 
     refresh(): boolean {
       return false;
     }
-    sleep(miliseconds) {
-      var currentTime = new Date().getTime();
-   
-      while (currentTime + miliseconds >= new Date().getTime()) {
-      }
-   }
 }
