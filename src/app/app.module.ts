@@ -22,6 +22,8 @@ import { StoreModule } from '@ngrx/store';
 import { AdminEffects } from './Components/Admin/admin.effects';
 import { AdminsReducer } from '../app/Components/Admin/admin.reducers'
 import { environment } from 'src/environments/environment';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
+import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoaderInterceptor } from './Services/interceptor.service';
 import { AdminsService } from './Components/services/admin.service';
@@ -36,6 +38,8 @@ import { AdminsService } from './Components/services/admin.service';
    
   ],
   imports: [
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule,
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule,

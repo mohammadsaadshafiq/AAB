@@ -9,14 +9,19 @@ import { AuthActionTypes, LogIn, LogInFailure, LogInSuccess } from './login.acti
 import { User } from '../model/user';
 import { of } from 'rxjs';
 import { AdminsService } from 'src/app/Components/services/admin.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { LoginService } from 'src/app/Services/login.service';
+
 @Injectable()
 export class AuthEffects {
 
   constructor(
+    private _snackBar: MatSnackBar,
     private actions: Actions,
     private authService: ApiDataService,
     private router: Router,
-    public service:AdminsService
+    public service:AdminsService,
+    public _service:LoginService
   ) {}
 
   @Effect()
@@ -28,12 +33,15 @@ export class AuthEffects {
         .pipe(
           map((user:any) => {
             this.router.navigate(['admin-list']);
+            this._snackBar.open("Login Successful","",{"duration": 1000});
             localStorage.setItem('_context',user.data.token);
             localStorage.setItem('currentId',user.data.user._id);
+            this._service.setUserLoggedIn(true);
             return new LogInSuccess({token: user.data.token, email: user.data.user.email,id:user.data.user.id});
           
         }),
         catchError((error) => {
+          this._snackBar.open("Login Unsuccessful","",{"duration": 1000});
           return of(new LogInFailure(error.error.errors));
         }))}));
    
