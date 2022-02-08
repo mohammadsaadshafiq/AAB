@@ -23,24 +23,33 @@ export class HardCodeComponent implements OnInit {
   public defaultColDef;
   frameworkComponents: any;
   private rowClassRules;
+  domLayout;
   columnDefs = [
         { headerName: 'ID',field: '_id', hide: 'true'},
-        { field: 'Key',width: 800, filter: true,valueFormatter: this.capatalize },
-        { field: 'Value', resizable: true, filter: true },
-        { field: 'Actions', cellRenderer: 'editcell',width: 120},
+        { field: 'Key', filter: true,valueFormatter: this.capatalize, width: 800 },
+        { field: 'Value', resizable: true, filter: true,width: 150 },
+        { field: 'Actions', cellRenderer: 'editcell',width: 150},
     ];
     ngOnInit() {
       this.gridCall();
     }
+ 
     gridCall(){
       this._AdminService.getHardCode().subscribe(x => {
         this.data = x ;
         this.rowData = this.data.data;
       });
     }
+    sizeToFit() {
+      this.gridApi.sizeColumnsToFit();
+    }
+    
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
+      params.api.sizeColumnsToFit();
+      params.api.resetRowHeights();
+      this.gridApi.setDomLayout('autoHeight')
     }
     capatalize(params){
       let a = params.value.replace(/\_/g, " ") 

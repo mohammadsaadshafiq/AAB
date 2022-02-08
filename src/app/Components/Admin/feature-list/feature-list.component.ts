@@ -40,6 +40,7 @@ export class FeatureListComponent {
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
+      this.gridApi.setDomLayout('autoHeight')
     }
     sleep(miliseconds) {
       var currentTime = new Date().getTime();
