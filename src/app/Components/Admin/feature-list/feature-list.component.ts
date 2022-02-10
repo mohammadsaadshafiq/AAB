@@ -40,6 +40,8 @@ export class FeatureListComponent {
     onGridReady(params) {
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
+      params.api.sizeColumnsToFit();
+      params.api.resetRowHeights();
       this.gridApi.setDomLayout('autoHeight')
     }
     sleep(miliseconds) {
