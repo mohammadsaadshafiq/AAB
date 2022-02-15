@@ -29,7 +29,8 @@ export class EditCellDialogComponent  {
       Name:[{value:this.data.data.Name,disabled:true}],
       Status:[this.data.data.Status,Validators.required],
       Message:[this.data.data.Message,Validators.required],
-      ShowtoGuest:[this.data.data.ShowtoGuest]
+      ShowtoGuest:[this.data.data.ShowtoGuest],
+      ShowtoPassportUser:[this.data.data.ShowtoPassportUser]
     });
    }
    onSubmit(value){

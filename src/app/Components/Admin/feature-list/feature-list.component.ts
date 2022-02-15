@@ -26,6 +26,7 @@ export class FeatureListComponent {
         { field: 'Status', resizable: true, filter: true },
         { field: 'Message', resizable: true, filter: true },
         {  headerName: 'Show to Guest',field: 'ShowtoGuest', resizable: true, filter: true },
+        {  headerName: 'Show to Passport User',field: 'ShowtoPassportUser', resizable: true, filter: true },
         { field: 'Actions', cellRenderer: 'editcell', width: 120},
     ];
     ngOnInit() {
