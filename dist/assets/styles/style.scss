@@ -16,14 +16,15 @@ File: scss
  *	7. Widgets
  *	8. Custom Templates
  */
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-material.css";
+@import "variable";
 
-@import 'variable';
-
-@import 'spinner';
-@import 'app';
-@import 'header';
-@import 'pages';
-@import 'sidebar';
-@import 'responsive';
+@import "spinner";
+@import "app";
+@import "header";
+@import "pages";
+@import "sidebar";
+@import "responsive";
 
 @import "../styles/icons/material-design-iconic-font/css/materialdesignicons.min.css";

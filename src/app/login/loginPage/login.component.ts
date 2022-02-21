@@ -16,6 +16,7 @@ import { AdminsService } from 'src/app/Components/services/admin.service';
 export class LoginComponent implements OnInit {
   errorMessage$: Observable<any>;
   errorMessageList: Messages[];
+  passType: string = "password";
   constructor(private formBuilder: FormBuilder,public service:AdminsService,
     private router: Router,
     private store: Store<AppState>) {
@@ -36,6 +37,13 @@ submit() {
   }
   this.store.dispatch(new LogIn(this.loginForm.value))
  // this.router.navigate(['/admin-list'])
+}
+show() {
+  if (this.passType == "password") {
+    this.passType = "text";
+  } else {
+    this.passType = "password";
+  }
 }
 
 }

@@ -43,6 +43,9 @@ export class AddAdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!localStorage.getItem('_context')){
+      return this.router.navigate(['/login'])
+    }
     this.rolesAPI();
     this.sleep(200)
     if(this.role == false){

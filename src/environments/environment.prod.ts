@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  APIUrl:"localhost"
+  APIUrl:"https://aab-test.herokuapp.com/api/v1/"
 };

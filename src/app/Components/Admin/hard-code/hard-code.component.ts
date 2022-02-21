@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ColDef } from "ag-grid-community";
 import { AdminsService } from "../../services/admin.service";
 import { HardCodeCellRendererComponent } from '../hard-code-cell-renderer/hard-code-cell-renderer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hard-code',
@@ -9,7 +10,7 @@ import { HardCodeCellRendererComponent } from '../hard-code-cell-renderer/hard-c
   styleUrls: ['./hard-code.component.css']
 })
 export class HardCodeComponent implements OnInit {
-  constructor(public _AdminService:AdminsService){
+  constructor(public _AdminService:AdminsService, public router :Router){
     this.frameworkComponents = {
       editcell : HardCodeCellRendererComponent
     };
@@ -31,6 +32,9 @@ export class HardCodeComponent implements OnInit {
         { field: 'Actions', cellRenderer: 'editcell',width: 150},
     ];
     ngOnInit() {
+      if(!localStorage.getItem('_context')){
+        return this.router.navigate(['/login'])
+      }
       this.gridCall();
     }
  

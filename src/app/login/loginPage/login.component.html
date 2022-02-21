@@ -9,14 +9,15 @@
           <mat-error *ngIf="loginForm.get('username')?.invalid">Username is required</mat-error>
         </mat-form-field>
       </p>
-    
-      <p>
+      <div class="left">
+          <mat-icon matTooltip="show hide password" (click)="show()"
+            >visibility</mat-icon
+          >
         <mat-form-field>
-          <input type="password" matInput placeholder="Password" formControlName="password">
+          <input  type="{{ passType }}" matInput placeholder="Password" formControlName="password">
           <mat-error *ngIf="loginForm.get('password')?.invalid">Password is required</mat-error>
         </mat-form-field>
-      </p>
-    
+    </div>
       <mat-error *ngIf="errorMessageList.length"><span *ngFor="let error of errorMessageList">{{error.message}}</span></mat-error>
        
       <div class="button" fxLayoutAlign="center center">

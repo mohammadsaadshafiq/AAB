@@ -39,7 +39,10 @@ export class AdminListComponent implements OnInit {
       location.reload()
     }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if(!localStorage.getItem('_context')){
+      return this.router.navigate(['/login'])
+    }
     this.rolesAPI();
     this.adminService.roleLogic();
     this.sleep(200)

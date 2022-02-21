@@ -2,13 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { ColDef } from "ag-grid-community";
 import { AdminsService } from "../../services/admin.service";
 import { EditCellRendererComponent } from "../edit-cell-renderer/edit-cell-renderer.component";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-feature-list",
   templateUrl: "./feature-list.component.html",
   styleUrls: ["./feature-list.component.css"]
 })
 export class FeatureListComponent {
-  constructor(public _AdminService:AdminsService){
+  constructor(public _AdminService:AdminsService, public router:Router){
     this.frameworkComponents = {
       editcell : EditCellRendererComponent
     };
@@ -30,6 +31,9 @@ export class FeatureListComponent {
         { field: 'Actions', cellRenderer: 'editcell', width: 120},
     ];
     ngOnInit() {
+      if(!localStorage.getItem('_context')){
+        return this.router.navigate(['/login'])
+      }
       this.gridCall();
     }
     gridCall(){

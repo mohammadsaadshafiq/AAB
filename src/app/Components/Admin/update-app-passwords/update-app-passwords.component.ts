@@ -25,6 +25,9 @@ export class UpdateAppPasswordsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if(!localStorage.getItem('_context')){
+      return this.router.navigate(['/login'])
+    }
     this.form = this.formBuilder.group({
       username: ["", Validators.required],
       password: ["", Validators.required],
