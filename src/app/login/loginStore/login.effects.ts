@@ -33,7 +33,7 @@ export class AuthEffects {
         .pipe(
           map((user:any) => {
             this.router.navigate(['admin-list']);
-            this._snackBar.open("Login Successful","",{"duration": 1000});
+            this._snackBar.open("Login Successful","",{"duration": 2500});
             localStorage.setItem('_context',user.data.token);
             localStorage.setItem('currentId',user.data.user._id);
             this._service.setUserLoggedIn(true);
@@ -41,7 +41,7 @@ export class AuthEffects {
           
         }),
         catchError((error) => {
-          this._snackBar.open("Login Unsuccessful","",{"duration": 1000});
+          this._snackBar.open("Invalid Username / Password Combination","",{"duration": 1000});
           return of(new LogInFailure(error.error.errors));
         }))}));
    

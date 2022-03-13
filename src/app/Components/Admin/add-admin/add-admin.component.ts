@@ -28,6 +28,8 @@ export class AddAdminComponent implements OnInit {
   title='Add New Admin';
   role;
   data1;
+  passType: string = "password";
+  passTypeBool: boolean=false
   constructor(private router:Router,private _Activatedroute: ActivatedRoute,
     private adminService: AdminsService,
     private formBuilder: FormBuilder,
@@ -60,7 +62,7 @@ export class AddAdminComponent implements OnInit {
     })
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
-      email: ['',Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")],
+      email: ['', [Validators.required, Validators.email]],
       password:['',Validators.required],
       role: ['', Validators.required]
     });
@@ -142,4 +144,14 @@ export class AddAdminComponent implements OnInit {
     while (currentTime + miliseconds >= new Date().getTime()) {
     }
  }
+ show() {
+  if (this.passType == "password") {
+    this.passTypeBool=true
+    this.passType = "text";
+    
+  } else {
+    this.passTypeBool=false
+    this.passType = "password";
+  }
+}
 }

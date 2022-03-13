@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   errorMessage$: Observable<any>;
   errorMessageList: Messages[];
   passType: string = "password";
+  passTypeBool: boolean=false
   constructor(private formBuilder: FormBuilder,public service:AdminsService,
     private router: Router,
     private store: Store<AppState>) {
@@ -40,8 +41,11 @@ submit() {
 }
 show() {
   if (this.passType == "password") {
+    this.passTypeBool=true
     this.passType = "text";
+    
   } else {
+    this.passTypeBool=false
     this.passType = "password";
   }
 }

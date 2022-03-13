@@ -14,6 +14,7 @@ export class EditCellDialogComponent  {
   notValid: boolean;
   data1;
   role;
+  hiden =true;
   constructor(public router: Router,
               private formBuilder: FormBuilder, public _service : AdminsService,
               public dialogRef: MatDialogRef<EditCellDialogComponent>,
@@ -22,16 +23,34 @@ export class EditCellDialogComponent  {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  hide(){
+      if (this.form.get("Status").value =='Hidden'){
+         this.hiden =false;
+         this.form.patchValue({
+          ShowtoPassportUser: false,
+          ShowtoGuest:false,
+        });
+      }
+      else{
+        this.hiden =true;
+        this.form.patchValue({
+          ShowtoPassportUser: this.data.data.ShowtoGuest,
+          ShowtoGuest:this.data.data.ShowtoPassportUser,
+        });
+     }
+  }
   ngOnInit(): void {
     this.role=this.data.role;
     this.form = this.formBuilder.group({
       id:[this.data.data._id,Validators.required],
       Name:[{value:this.data.data.Name,disabled:true}],
       Status:[this.data.data.Status,Validators.required],
-      Message:[this.data.data.Message,Validators.required],
+      Message:[this.data.data.Message],
       ShowtoGuest:[this.data.data.ShowtoGuest],
-      ShowtoPassportUser:[this.data.data.ShowtoPassportUser]
+      ShowtoPassportUser:[this.data.data.ShowtoPassportUser],
+      Message_AR: [this.data.data.Message_AR]
     });
+    this.hide();
    }
    onSubmit(value){
     if(!localStorage.getItem('_context')){

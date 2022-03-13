@@ -16,6 +16,7 @@ export class UpdateAppPasswordsComponent implements OnInit {
   flag: Boolean = false;
   test: Boolean = false;
   passType: string = "password";
+  passTypeBool: boolean=false
   roles;
   data1: any;
   constructor(
@@ -35,7 +36,7 @@ export class UpdateAppPasswordsComponent implements OnInit {
     });
     this.savePassCodes();
     this.rolesAPI();
-    this.sleep(200)
+    this.sleep(180)
   }
   onDropdown(event) {
     let codes = this.data.data[0];
@@ -88,13 +89,6 @@ export class UpdateAppPasswordsComponent implements OnInit {
       }
     });
   }
-  show() {
-    if (this.passType == "password") {
-      this.passType = "text";
-    } else {
-      this.passType = "password";
-    }
-  }
   addAdmin(value) {
     if (
       this.form.get("username").valid &&
@@ -141,11 +135,22 @@ export class UpdateAppPasswordsComponent implements OnInit {
       this.roles= false
     }
   }
+  show() {
+    if (this.passType == "password") {
+      this.passTypeBool=true
+      this.passType = "text";
+      
+    } else {
+      this.passTypeBool=false
+      this.passType = "password";
+    }
+  }
   sleep(miliseconds) {
     var currentTime = new Date().getTime();
  
     while (currentTime + miliseconds >= new Date().getTime()) {
     }
  }
+ 
   
 }

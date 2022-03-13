@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-overview-example-dialog',
@@ -35,12 +36,15 @@ export class DialogComponent {
   animal: string='';
   name: string='';
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog , public router : Router) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       width: '250px',
       data: { name: this.name, animal: this.animal }
+    });
+    this.router.events.subscribe(() => {
+      dialogRef.close();
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -48,4 +52,5 @@ export class DialogComponent {
       this.animal = result;
     });
   }
+  
 }

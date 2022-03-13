@@ -18,9 +18,9 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Status</mat-label>
-          <mat-select matNativeControl formControlName="Status">
-            <mat-option value="Hidden">Hidden </mat-option>
+          <mat-select (selectionChange)="hide($event)"matNativeControl formControlName="Status">
             <mat-option value="Disabled">Disabled </mat-option>
+            <mat-option value="Hidden">Hidden </mat-option>
             <mat-option value="Active">Active </mat-option>
           </mat-select>
           <mat-error *ngIf="form.get('Status')?.invalid"
@@ -35,7 +35,14 @@
             >Message is required</mat-error
           >
         </mat-form-field>
-        <div>
+        <mat-form-field>
+            <mat-label>رسالة</mat-label>
+            <input matInput formControlName="Message_AR" />
+            <mat-error *ngIf="form.get('Message_AR')?.invalid"
+              >Message is required</mat-error
+            >
+          </mat-form-field>
+        <div *ngIf ="hiden">
           <mat-label>Show To Guest:  </mat-label>
           <mat-checkbox
             style="margin-left:2px"
@@ -44,7 +51,7 @@
             class="example-margin"
           ></mat-checkbox>
         </div>
-        <div>
+        <div  *ngIf ="hiden">
           <mat-label>Show To Passport User:  </mat-label>
           <mat-checkbox
             style="margin-left:2px"

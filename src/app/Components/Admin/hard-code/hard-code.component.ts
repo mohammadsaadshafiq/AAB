@@ -27,8 +27,8 @@ export class HardCodeComponent implements OnInit {
   domLayout;
   columnDefs = [
         { headerName: 'ID',field: '_id', hide: 'true'},
-        { field: 'Key', filter: true,valueFormatter: this.capatalize, width: 800 },
-        { field: 'Value', resizable: true, filter: true,width: 150 },
+        { field: 'Key',valueFormatter: this.capatalize, width: 800 },
+        { field: 'Value', resizable: true ,width: 150 },
         { field: 'Actions', cellRenderer: 'editcell',width: 150},
     ];
     ngOnInit() {

@@ -31,6 +31,9 @@ export class HardCodeCellRendererComponent  implements ICellRendererAngularComp 
         height: '54%',
         data: {data:this.params.data,role:this.role}
       });
+      this.router.events.subscribe(() => {
+        dialogRef.close();
+      });
     }
     refresh(): boolean {
       return false;

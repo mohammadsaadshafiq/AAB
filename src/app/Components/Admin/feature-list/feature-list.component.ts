@@ -23,11 +23,12 @@ export class FeatureListComponent {
   private rowClassRules;
   columnDefs = [
         { headerName: 'ID',field: '_id', resizable: true, hide: 'true'},
-        { field: 'Name', resizable: true, filter: true , width: 400},
-        { field: 'Status', resizable: true, filter: true },
-        { field: 'Message', resizable: true, filter: true },
-        {  headerName: 'Show to Guest',field: 'ShowtoGuest', resizable: true, filter: true },
-        {  headerName: 'Show to Passport User',field: 'ShowtoPassportUser', resizable: true, filter: true },
+        { headerName: 'Message_AR',field: 'Message_AR', resizable: true, hide: 'true'},
+        { field: 'Name', resizable: true, width: 400},
+        { field: 'Status', resizable: true  },
+        { field: 'Message', resizable: true },
+        {  headerName: 'Show to Guest',field: 'ShowtoGuest', resizable: true},
+        {  headerName: 'Show to Passport User',field: 'ShowtoPassportUser', resizable: true},
         { field: 'Actions', cellRenderer: 'editcell', width: 120},
     ];
     ngOnInit() {

@@ -5,14 +5,15 @@
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
       <p>
         <mat-form-field>
-          <input type="text" matInput placeholder="Username" formControlName="username">
-          <mat-error *ngIf="loginForm.get('username')?.invalid">Username is required</mat-error>
+          <input type="text" matInput placeholder="Username / Email" formControlName="username">
+          <mat-error *ngIf="loginForm.get('username')?.invalid">Username / Email is required</mat-error>
         </mat-form-field>
       </p>
       <div class="left">
-          <mat-icon matTooltip="show hide password" (click)="show()"
+          <mat-icon  *ngIf ="passTypeBool" matTooltip="show hide password" (click)="show()"
             >visibility</mat-icon
           >
+          <mat-icon (click)="show()" *ngIf ="!passTypeBool">visibility_off</mat-icon>
         <mat-form-field>
           <input  type="{{ passType }}" matInput placeholder="Password" formControlName="password">
           <mat-error *ngIf="loginForm.get('password')?.invalid">Password is required</mat-error>

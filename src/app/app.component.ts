@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 import { Keepalive } from '@ng-idle/keepalive';
 import { Router } from '@angular/router';
@@ -14,6 +14,8 @@ export class AppComponent {
   timedOut = false;
   lastPing?: Date = null;
   title = 'angular-idle-timeout';
+  @ViewChild('myDiv') myDiv: ElementRef<HTMLElement>;
+
   constructor(public _service:LoginService,private idle: Idle, public keepalive: Keepalive, public router:Router) {
     // sets an idle timeout of 5 seconds, for testing purposes.
     idle.setIdle(120);
@@ -80,8 +82,15 @@ export class AppComponent {
     this._service.setUserLoggedIn(false);
     localStorage.removeItem("_context");
     localStorage.removeItem("currentId");
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']).then(()=>{
+    })
   }
+  triggerFalseClick() {
+    let el: HTMLElement = this.myDiv.nativeElement;
+    el.click();
+}
+passCharge(){
 
+}
 }
 
