@@ -30,14 +30,14 @@
 
         <mat-form-field>
           <mat-label>Message</mat-label>
-          <input matInput formControlName="Message" />
+          <input maxlength="50" matInput formControlName="Message" />
           <mat-error *ngIf="form.get('Message')?.invalid"
             >Message is required</mat-error
           >
         </mat-form-field>
         <mat-form-field>
             <mat-label>رسالة</mat-label>
-            <input matInput formControlName="Message_AR" />
+            <input maxlength="50" matInput formControlName="Message_AR" />
             <mat-error *ngIf="form.get('Message_AR')?.invalid"
               >Message is required</mat-error
             >

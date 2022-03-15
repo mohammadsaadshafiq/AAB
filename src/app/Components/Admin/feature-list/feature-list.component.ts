@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ColDef } from "ag-grid-community";
+import { ColDef, GridReadyEvent, ITextFilterParams } from 'ag-grid-community';
 import { AdminsService } from "../../services/admin.service";
 import { EditCellRendererComponent } from "../edit-cell-renderer/edit-cell-renderer.component";
 import { Router } from "@angular/router";
@@ -24,7 +24,7 @@ export class FeatureListComponent {
   columnDefs = [
         { headerName: 'ID',field: '_id', resizable: true, hide: 'true'},
         { headerName: 'Message_AR',field: 'Message_AR', resizable: true, hide: 'true'},
-        { field: 'Name', resizable: true, width: 400},
+        { field: 'Name',filter: 'agTextColumnFilter',filterParams: athleteFilterParams, resizable: true, width: 400},
         { field: 'Status', resizable: true  },
         { field: 'Message', resizable: true },
         {  headerName: 'Show to Guest',field: 'ShowtoGuest', resizable: true},
@@ -57,3 +57,24 @@ export class FeatureListComponent {
       }
    }
 }
+var athleteFilterParams: ITextFilterParams = {
+  filterOptions: ['contains', 'notContains'],
+  textFormatter: function (r) {
+    if (r == null) return null;
+    return r
+      .toLowerCase()
+      .replace(/[àáâãäå]/g, 'a')
+      .replace(/æ/g, 'ae')
+      .replace(/ç/g, 'c')
+      .replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i')
+      .replace(/ñ/g, 'n')
+      .replace(/[òóôõö]/g, 'o')
+      .replace(/œ/g, 'oe')
+      .replace(/[ùúûü]/g, 'u')
+      .replace(/[ýÿ]/g, 'y');
+  },
+  debounceMs: 200,
+  suppressAndOrCondition: true,
+} as ITextFilterParams;
+

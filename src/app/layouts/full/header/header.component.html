@@ -4,7 +4,7 @@
 <!-- ============================================================== -->
 <button (click)="open()" [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5"> <i class="material-icons">person</i> </button>
 <mat-menu #profile="matMenu" class="mymegamenu">
-    <button *ngIf ="roles" (click)="openDialog()" mat-menu-item>
+    <button (click)="openDialog()" mat-menu-item>
         <mat-icon>settings</mat-icon> Change Password </button>
     <!-- <button mat-menu-item>
         <mat-icon>account_box</mat-icon> Profile </button> -->

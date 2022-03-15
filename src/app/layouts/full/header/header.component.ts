@@ -18,10 +18,8 @@ roles;
     return this.router.navigate(['/login'])
   }
   ngOnInit(){
-    this._service.roleLogic();
   }
   open(){
-    this.roles =this._service.roleReturn()
   }
   openDialog(): void {
       const dialogRef = this.dialog.open(EditDialogComponent, {
