@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   errorMessageList: Messages[];
   passType: string = "password";
   passTypeBool: boolean=false
+
   constructor(private formBuilder: FormBuilder,public service:AdminsService,
     private router: Router,
     private store: Store<AppState>) {
@@ -25,7 +26,11 @@ export class LoginComponent implements OnInit {
     }
   loginForm: FormGroup = this.formBuilder.group({
     username:['',Validators.required],
-    password: ['',Validators.required]
+    password:['',[Validators.required,
+          Validators.pattern(/[a-z]/),
+          Validators.pattern(/[0-9]/),
+    
+    ]],
   });
   ngOnInit() {    
     this.errorMessage$.subscribe((state:LoginError) => {
@@ -49,5 +54,6 @@ show() {
     this.passType = "password";
   }
 }
+
 
 }

@@ -11,6 +11,7 @@ const MENUITEMS = [
   { state: 'update-pass', name: 'Manage Portals', type: 'link', icon:'password'},
   { state: 'feature-list', name: 'Feature List ', type: 'link', icon:'web'},
   { state: 'hard-code', name: 'Hard Code', type: 'link', icon:'vpn_key'},
+  { state: 'change-pass', name: 'Change Password', type: 'link', icon:'settings'},
   //{ state: 'update-pass', type: 'link', name: 'Update Passwords', icon: 'password' },
   // { state: 'grid', type: 'link', name: 'List Of Features',icon:'featured_play_list' },
   // { state: 'lists', type: 'link', name: 'Hard Coded Values', icon: 'vpn_key'},

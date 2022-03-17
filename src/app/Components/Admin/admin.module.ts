@@ -24,7 +24,8 @@ import { HardCodeComponent } from './hard-code/hard-code.component';
 import { HardCodeCellRendererComponent } from './hard-code-cell-renderer/hard-code-cell-renderer.component';
 import { HardCodeModalComponent } from './hard-code-modal/hard-code-modal.component';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
-import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
+import { MomentModule } from 'angular2-moment';
+import { ChangePassComponent } from './change-pass/change-pass.component';
 export const adminRoutes: Routes = [{
     path: '',
     component: AdminComponent,
@@ -58,6 +59,11 @@ export const adminRoutes: Routes = [{
         path: 'hard-code',
         component: HardCodeComponent
       },
+      {
+        path: 'change-pass',
+        component: ChangePassComponent
+      },
+      
     ]
     }
 ]
@@ -74,7 +80,8 @@ export const adminRoutes: Routes = [{
     EditCellDialogComponent,
     HardCodeComponent,
     HardCodeCellRendererComponent,
-    HardCodeModalComponent
+    HardCodeModalComponent,
+    ChangePassComponent,
   ],
   imports: [
     NgIdleKeepaliveModule.forRoot(),

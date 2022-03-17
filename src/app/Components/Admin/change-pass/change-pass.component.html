@@ -1,0 +1,66 @@
+<div>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit(form.value)"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      <mat-card fxFlex.gt-xs="50" fxFlex.sm="80">
+        <mat-card-title class="text-center">Update Pasword</mat-card-title>
+        <mat-card-content>
+          <div class="left">
+            <mat-icon
+              *ngIf="passTypeBool"
+              matTooltip="show hide password"
+              (click)="show()"
+              >visibility</mat-icon
+            >
+            <mat-icon (click)="show()" *ngIf="!passTypeBool"
+              >visibility_off</mat-icon
+            >
+            <mat-form-field>
+              <input
+                maxlength="40" minlength="7"
+                type="{{ passType }}"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+              />
+              <mat-error *ngIf="form.get('password')?.invalid"
+                >Password must be minimum 6 letters and alphanumeric</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="left">
+            <mat-icon
+              *ngIf="passTypeBool2"
+              matTooltip="show hide password"
+              (click)="showbtn()"
+              >visibility</mat-icon
+            >
+            <mat-icon (click)="showbtn()" *ngIf="!passTypeBool2"
+              >visibility_off</mat-icon
+            >
+            <mat-form-field>
+              <input
+                maxlength="40" minlength="7"
+                type="{{ passType2 }}"
+                matInput
+                placeholder="Re-enter Password"
+                formControlName="Updatepassword"
+              />
+              <mat-error *ngIf="form.get('Updatepassword')?.invalid"
+                >Password must be minimum 6 letters and alphanumeric</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="button" fxLayoutAlign="center center">
+            <button type="submit" mat-raised-button color="primary">
+              Submit
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+  

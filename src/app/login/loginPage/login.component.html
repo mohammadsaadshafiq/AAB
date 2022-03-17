@@ -16,12 +16,12 @@
           <mat-icon (click)="show()" *ngIf ="!passTypeBool">visibility_off</mat-icon>
         <mat-form-field>
           <input maxlength="40" minlength="7" type="{{ passType }}" matInput placeholder="Password" formControlName="password">
-          <mat-error *ngIf="loginForm.get('password')?.invalid">Correct Password is required</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.invalid">Password must be minimum 6 letters and alphanumeric</mat-error>
         </mat-form-field>
     </div>
       <mat-error *ngIf="errorMessageList.length"><span *ngFor="let error of errorMessageList">{{error.message}}</span></mat-error>
        
-      <div class="button" fxLayoutAlign="center center">
+      <div style="margin-top:5%" class="button" fxLayoutAlign="center center">
         <button type="submit" mat-raised-button color="primary">Login</button>
       </div>
     
