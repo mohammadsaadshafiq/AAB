@@ -20,13 +20,14 @@
           >
           <mat-form-field>
             <input
+              maxlength="40" minlength="7"
               type="{{ passType }}"
               matInput
               placeholder="Password"
               formControlName="password"
             />
             <mat-error *ngIf="form.get('password')?.invalid"
-              >Password is required</mat-error
+              >Correct Password is required</mat-error
             >
           </mat-form-field>
         </div>

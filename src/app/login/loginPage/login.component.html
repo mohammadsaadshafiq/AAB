@@ -10,13 +10,13 @@
         </mat-form-field>
       </p>
       <div class="left">
-          <mat-icon  *ngIf ="passTypeBool" matTooltip="Show / Hide password" (click)="show()"
+          <mat-icon  *ngIf ="passTypeBool" (click)="show()"
             >visibility</mat-icon
           >
           <mat-icon (click)="show()" *ngIf ="!passTypeBool">visibility_off</mat-icon>
         <mat-form-field>
-          <input  type="{{ passType }}" matInput placeholder="Password" formControlName="password">
-          <mat-error *ngIf="loginForm.get('password')?.invalid">Password is required</mat-error>
+          <input maxlength="40" minlength="7" type="{{ passType }}" matInput placeholder="Password" formControlName="password">
+          <mat-error *ngIf="loginForm.get('password')?.invalid">Correct Password is required</mat-error>
         </mat-form-field>
     </div>
       <mat-error *ngIf="errorMessageList.length"><span *ngFor="let error of errorMessageList">{{error.message}}</span></mat-error>
