@@ -48,7 +48,7 @@ export class EditCellDialogComponent  {
       Message:[this.data.data.Message,Validators.required],
       ShowtoGuest:[this.data.data.ShowtoGuest],
       ShowtoPassportUser:[this.data.data.ShowtoPassportUser],
-      Message_AR: [this.data.data.Message_AR,,Validators.required]
+      Message_AR: [this.data.data.Message_AR,Validators.required]
     });
     this.hide();
    }
